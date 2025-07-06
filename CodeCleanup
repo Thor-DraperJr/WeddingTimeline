@@ -1,6 +1,0 @@
-#!/bin/bash
-# Code Cleanup Command Wrapper
-# Usage: /CodeCleanup
-
-cd /home/thor-ubuntu/WeddingTimeline
-./scripts/code-cleanup.sh

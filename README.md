@@ -1,33 +1,41 @@
-# Carolina & Thor's Wedding Timeline 💕
+# Wedding Timeline - Lina & Thor 💕
 
-Welcome to our interactive wedding timeline! This beautiful, responsive web application helps our guests stay informed about all the events during our special weekend in Banff & Canmore, Alberta.
+A beautiful, interactive wedding timeline website built with Next.js, Tailwind CSS, and deployed on Azure Static Web Apps.
 
-## 🎉 Wedding Details
+## � Features
 
-- **Dates:** July 10-11, 2025
-- **Locations:** Banff & Canmore, Alberta, Canada
-- **Couples:** Carolina & Thor
+- **Interactive Timeline**: Beautiful timeline with event filtering (All, Next, Upcoming)
+- **Real-time Status**: Current events are highlighted automatically
+- **Mobile-First Design**: Optimized for wedding guests using smartphones
+- **Elegant Styling**: Rose/pink wedding theme with smooth animations
+- **Quick Access**: Direct links to WhatsApp group and board games app
+- **Accessible**: High contrast, keyboard navigation, screen reader friendly
 
-## ✨ Features
+## 🚀 Live Site
 
-- 📱 **Mobile-first design** - Perfect for day-of use on smartphones
-- 🕐 **Real-time updates** - See current and upcoming events
-- 📍 **Location integration** - Direct links to Google Maps
-- ♿ **Accessibility focused** - Screen reader friendly and keyboard navigable
-- 🎨 **Beautiful wedding theme** - Soft pastels and rose gold accents
-- 📋 **Detailed information** - Times, locations, participants, and notes
+- **Production**: https://blue-sand-0bdcf971e.1.azurestaticapps.net
+- **Preview**: https://blue-sand-0bdcf971e-preview.westus2.1.azurestaticapps.net
 
-## 🏗️ Technical Stack
+## � Event Information
 
-- **Frontend:** Next.js 14 with TypeScript
+**Wedding Dates**: July 10-11, 2025  
+**Location**: Banff, Alberta
+
+## 🛠️ Technology Stack
+
+- **Framework:** Next.js 14 with TypeScript
 - **Styling:** Tailwind CSS with custom wedding theme
-- **Hosting:** Azure Static Web Apps
+- **Hosting:** Azure Static Web Apps (Free tier)
 - **CI/CD:** GitHub Actions
-- **Infrastructure:** Azure Bicep templates
+- **Icons:** Lucide React
 
 ## 🚀 Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/Thor-DraperJr/WeddingTimeline.git
+cd WeddingTimeline
+
 # Install dependencies
 npm install
 
@@ -36,150 +44,68 @@ npm run dev
 
 # Build for production
 npm run build
-
-# Run linting
-npm run lint
-
-# Type checking
-npm run type-check
 ```
 
-## 📱 Azure Deployment
+## � Deployment
 
-This application is designed for Azure-native deployment using Infrastructure as Code.
+The site automatically deploys to Azure Static Web Apps when changes are pushed to the `main` branch via GitHub Actions.
 
-### Prerequisites
+### Azure Resources
 
-- Azure CLI installed and configured
-- GitHub account with repository access
-- Node.js 18+ and npm
+- **Resource Group**: `wedding-timeline-rg`
+- **Static Web App**: `wedding-timeline` (West US 2)
+- **SKU**: Free tier (perfect for wedding site needs)
 
-### Deploy Infrastructure
+### Manual Deployment (if needed)
 
-1. **Clone and setup:**
+```bash
+# Install Azure Static Web Apps CLI
+npm install -g @azure/static-web-apps-cli
 
-   ```bash
-   git clone <repository-url>
-   cd WeddingTimeline
-   npm install
-   ```
+# Build the project
+npm run build
 
-2. **Configure Azure parameters:**
-   Update `azure/parameters.json` with your details:
-
-   ```json
-   {
-     "repositoryUrl": "https://github.com/YOUR_USERNAME/WeddingTimeline",
-     "repositoryToken": "YOUR_GITHUB_TOKEN"
-   }
-   ```
-
-3. **Deploy Azure resources:**
-
-   ```bash
-   # Login to Azure
-   az login
-
-   # Deploy infrastructure
-   az deployment sub create \
-     --location eastus \
-     --template-file azure/main.bicep \
-     --parameters @azure/parameters.json \
-     --parameters repositoryToken="YOUR_GITHUB_TOKEN"
-   ```
-
-4. **Configure GitHub Secrets:**
-   Add the following secrets to your GitHub repository:
-   - `AZURE_STATIC_WEB_APPS_API_TOKEN` - From the Static Web App deployment output
-
-### Manual Deployment
-
-You can also deploy manually using the Azure portal:
-
-1. Create an Azure Static Web App
-2. Connect to your GitHub repository
-3. Set build configuration:
-   - **App location:** `/`
-   - **API location:** `` (empty)
-   - **Output location:** `out`
-   - **Build command:** `npm run build`
-
-## 🏗️ Project Structure
-
-```
-WeddingTimeline/
-├── src/
-│   ├── app/                 # Next.js app directory
-│   ├── components/          # React components
-│   ├── data/               # Wedding timeline data
-│   ├── types/              # TypeScript interfaces
-│   └── utils/              # Utility functions
-├── azure/                  # Azure infrastructure templates
-│   ├── main.bicep         # Main Bicep template
-│   ├── modules/           # Bicep modules
-│   └── parameters.json    # Deployment parameters
-├── .github/
-│   └── workflows/         # GitHub Actions CI/CD
-└── public/                # Static assets
+# Deploy to Azure
+swa deploy --app-location . --output-location out --resource-group wedding-timeline-rg --app-name wedding-timeline --subscription-id YOUR_SUBSCRIPTION_ID
 ```
 
-## 📊 Monitoring & Analytics
+### GitHub Actions Setup
 
-The application includes Azure Application Insights for:
+To enable automatic deployment, add this secret to your GitHub repository:
 
-- Performance monitoring
-- Error tracking
-- User analytics
-- Real-time dashboards
+- **Secret Name**: `AZURE_STATIC_WEB_APPS_API_TOKEN`
+- **Secret Value**: `486032e98c814ddc946fc1573d763dd624bbb626f876a3b2bfe0b8b9df08132f01-86aeeb0e-6345-4fda-aa6e-ce7e8a513d8f01e02310bdcf971e`
 
-Access your insights through the Azure portal after deployment.
+## 📱 Quick Links for Guests
 
-## 🔧 Development
+- **WhatsApp Group**: [Join here](https://chat.whatsapp.com/GXnhYAKikvREQv6GsHWGb4)
+- **Board Games App**: [Play games](https://blue-ocean-05fae780f.1.azurestaticapps.net)
 
-### Code Quality
+## 📝 Updating Events
 
-- **ESLint** - Code linting and formatting
-- **Prettier** - Code formatting
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Utility-first styling
+To update the wedding timeline events:
 
-### Key Components
+1. Edit `src/data/weddingTimeline.ts`
+2. Commit and push changes to `main` branch
+3. GitHub Actions will automatically rebuild and deploy
 
-1. **WeddingTimeline** - Main timeline component
-2. **EventCard** - Individual event display
-3. **TimelineDay** - Day grouping component
-4. **CurrentEventIndicator** - Real-time event tracking
+## 🔒 Security & Best Practices
 
-### Data Structure
+- ✅ No hardcoded secrets or API keys
+- ✅ HTTPS enabled by default
+- ✅ Azure CDN for fast global delivery
+- ✅ Responsive design for all devices
+- ✅ Accessible design following WCAG guidelines
 
-Wedding events are structured with:
+## 🤝 Contributing
 
-- Time and date information
-- Location details with Google Maps integration
-- Participant lists
-- Categories and icons
-- Notes and special instructions
+This is a personal wedding website, but if you spot any issues:
 
-## 🎨 Design System
-
-The wedding theme uses:
-
-- **Colors:** Soft pastels (rose, blush, sage) with rose gold accents
-- **Typography:** Playfair Display (headings) + Inter (body)
-- **Icons:** Lucide React icon set
-- **Animations:** Subtle Framer Motion transitions
-
-## 📞 Support
-
-For technical issues or wedding questions:
-
-- **Carolina:** (980) 297-2290
-- **Thor:** (704) 560-3428
-
-## 🙏 Acknowledgments
-
-Built with love for our special day! Thanks to all our family and friends who will be celebrating with us.
+1. Open an issue describing the problem
+2. Or submit a pull request with the fix
 
 ---
+
+**Made with 💕 for Lina & Thor's special day**
 
 **🎊 We can't wait to celebrate with you! 💕**

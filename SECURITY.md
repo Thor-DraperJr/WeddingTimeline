@@ -151,7 +151,7 @@ If a security issue is detected:
 ## 📞 Security Contacts
 
 - **Technical Lead:** Thor (704.560.3428)
-- **Project Owner:** Carolina (980.297.2290)
+- **Project Owner:** Carolina
 
 ## 🔗 Security Resources
 
