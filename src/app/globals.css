@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-wedding-cream text-gray-800 font-sans;
+  }
+}
+
+@layer components {
+  .timeline-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-6 transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+  }
+
+  .timeline-line {
+    @apply absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-wedding-rose-300 to-wedding-rose-500;
+  }
+
+  .timeline-dot {
+    @apply absolute left-4 w-4 h-4 bg-wedding-rose-500 rounded-full border-4 border-white shadow-lg;
+  }
+
+  .event-time {
+    @apply text-sm font-medium text-wedding-rose-600 bg-wedding-rose-50 px-3 py-1 rounded-full;
+  }
+
+  .section-divider {
+    @apply my-12 text-center relative;
+  }
+
+  .section-divider::before {
+    @apply absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-wedding-rose-300 to-transparent;
+    content: '';
+  }
+}
+
+@layer utilities {
+  .wedding-gradient {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #e8f4f1 100%);
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+}
+
+/* Wedding Timeline Custom Styles */
+.wedding-timeline {
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+.timeline-header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  background: linear-gradient(135deg, #be185d, #ec4899, #f97316);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.timeline-line {
+  background: linear-gradient(
+    to bottom,
+    rgba(251, 113, 133, 0.3) 0%,
+    rgba(251, 113, 133, 0.6) 50%,
+    rgba(251, 113, 133, 0.3) 100%
+  );
+}
+
+.timeline-dot {
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 1),
+    0 0 0 4px rgba(251, 113, 133, 0.3);
+}
+
+.event-card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+}
+
+.day-badge {
+  box-shadow: 0 4px 14px 0 rgba(236, 72, 153, 0.25);
+}
+
+/* Custom animations for wedding theme */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.timeline-dot.animate-pulse {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .timeline-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .event-card {
+    margin-left: 0.5rem;
+  }
+
+  .timeline-line {
+    left: 1rem;
+  }
+}
+
+/* Print styles for guest reference */
+@media print {
+  .timeline-controls {
+    display: none;
+  }
+
+  .event-card {
+    background: white !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "resourceGroupName": "rg-wedding-timeline",
+  "location": "eastus",
+  "staticWebAppName": "swa-carolina-thor-wedding",
+  "staticWebAppSku": "Free",
+  "repositoryUrl": "https://github.com/YOUR_USERNAME/WeddingTimeline",
+  "branch": "main"
+}
