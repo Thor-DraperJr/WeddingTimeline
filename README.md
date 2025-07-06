@@ -71,10 +71,11 @@ swa deploy --app-location . --output-location out --resource-group wedding-timel
 
 ### GitHub Actions Setup
 
+
 To enable automatic deployment, add this secret to your GitHub repository:
 
 - **Secret Name**: `AZURE_STATIC_WEB_APPS_API_TOKEN`
-- **Secret Value**: `486032e98c814ddc946fc1573d763dd624bbb626f876a3b2bfe0b8b9df08132f01-86aeeb0e-6345-4fda-aa6e-ce7e8a513d8f01e02310bdcf971e`
+- **Secret Value**: *(get this from the Azure Portal or CLI; never commit secrets to the repo)*
 
 ## 📱 Quick Links for Guests
 
