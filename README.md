@@ -169,13 +169,6 @@ The wedding theme uses:
 - **Icons:** Lucide React icon set
 - **Animations:** Subtle Framer Motion transitions
 
-## 📞 Support
-
-For technical issues or wedding questions:
-
-- **Carolina:** (980) 297-2290
-- **Thor:** (704) 560-3428
-
 ## 🙏 Acknowledgments
 
 Built with love for our special day! Thanks to all our family and friends who will be celebrating with us.
