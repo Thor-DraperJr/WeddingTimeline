@@ -1,6 +1,6 @@
 name: Deploy to Azure Static Web Apps
 
-on:
+"on":
   push:
     branches: [main]
   pull_request:
