@@ -1,12 +1,12 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-});
+// Using system fonts to avoid network dependencies during build
+// These provide excellent fallbacks that are available on all systems
+const fontClasses = {
+  inter: 'font-inter',
+  playfair: 'font-playfair',
+};
 
 export const metadata: Metadata = {
   title: "Carolina & Thor's Wedding Timeline",
@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className="font-inter">
       <body className="wedding-gradient min-h-screen">
         <div className="min-h-screen">{children}</div>
       </body>
