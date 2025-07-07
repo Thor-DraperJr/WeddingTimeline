@@ -1,15 +1,66 @@
-name: Deploy
+name: Deploy to Azure Static Web Apps
 
-on:
+"on":
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
-    
+    name: Build and Deploy Wedding Timeline
+
     steps:
-      - name: Run deployment demonstration
-        run: echo 'Deployment job running.'
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run security audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Lint code
+        run: npm run lint
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          CI: true
+          NODE_ENV: production
+
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          ls -la out/
+          echo "Build completed successfully!"
+
+      - name: Deploy to Azure Static Web Apps
+        id: deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: 'upload'
+          app_location: '.'
+          output_location: 'out'
+          skip_app_build: true
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "🎉 Wedding Timeline deployed successfully!"
+          echo "📱 Site should be available at: https://carolina-thor-wedding.azurestaticapps.net"
