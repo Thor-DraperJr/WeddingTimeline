@@ -36,17 +36,8 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Build Next.js application
-        run: npm run build
-        env:
-          CI: true
-          NODE_ENV: production
-
-      - name: Verify build output
-        run: |
-          echo "Checking build output..."
-          ls -la out/
-          echo "Build completed successfully!"
+      # Build will be handled by Azure Static Web Apps
+      # Keeping CI validation steps above for code quality checks
 
       - name: Deploy to Azure Static Web Apps
         id: deploy
@@ -57,7 +48,7 @@ jobs:
           action: 'upload'
           app_location: '.'
           output_location: 'out'
-          skip_app_build: true
+          skip_app_build: false
 
       - name: Deployment summary
         if: success()
