@@ -26,8 +26,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'serif'],
+        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        inter: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        playfair: ['Georgia', 'Times New Roman', 'serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-in-out',
