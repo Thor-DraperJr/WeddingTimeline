@@ -40,11 +40,6 @@ if [ -d "node_modules" ]; then
     print_success "Removed node_modules"
 fi
 
-if [ -f "package-lock.json" ]; then
-    rm package-lock.json
-    print_success "Removed package-lock.json"
-fi
-
 npm install
 print_success "Dependencies reinstalled"
 
