@@ -54,4 +54,4 @@ jobs:
         if: success()
         run: |
           echo "🎉 Wedding Timeline deployed successfully!"
-          echo "📱 Site should be available at: https://carolina-thor-wedding.azurestaticapps.net"
+          echo "📱 Site should be available at: https://www.thorandlina.love"

@@ -1,6 +1,18 @@
 # Wedding Timeline - Lina & Thor 💕
 
-A beautiful, interactive wedding timeline website built with Next.js, Tailwind CSS, and deployed on Azure Static Web Apps.
+A beautiful,## 📝 Deployment
+
+The site automatically deploys to Azure Static Web Apps when changes are pushed to the `main` branch via GitHub Actions.
+
+### Custom Domain
+
+The wedding timeline is available at **https://www.thorandlina.love** with a custom domain configured through:
+- **Domain**: Purchased from Namecheap (`thorandlina.love`)
+- **DNS**: CNAME record pointing `www` to `blue-sand-0bdcf971e.1.azurestaticapps.net`
+- **SSL**: Automatically managed by Azure Static Web Apps
+- **CDN**: Global content delivery via Azure
+
+### Azure Resourcesractive wedding timeline website built with Next.js, Tailwind CSS, and deployed on Azure Static Web Apps.
 
 ## � Features
 
@@ -13,8 +25,9 @@ A beautiful, interactive wedding timeline website built with Next.js, Tailwind C
 
 ## 🚀 Live Site
 
-- **Production**: https://blue-sand-0bdcf971e.1.azurestaticapps.net
-- **Preview**: https://blue-sand-0bdcf971e-preview.westus2.1.azurestaticapps.net
+- **Production**: https://www.thorandlina.love
+- **Azure Preview**: https://blue-sand-0bdcf971e-preview.westus2.1.azurestaticapps.net
+- **Azure Default**: https://blue-sand-0bdcf971e.1.azurestaticapps.net
 
 ## � Event Information
 

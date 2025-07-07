@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'July 2025',
   ],
   authors: [{ name: 'Wedding Timeline App' }],
-  metadataBase: new URL('https://carolina-thor-wedding.azurestaticapps.net'),
+  metadataBase: new URL('https://www.thorandlina.love'),
   icons: {
     icon: [
       { url: '/favicon.svg', type: 'image/svg+xml' },
