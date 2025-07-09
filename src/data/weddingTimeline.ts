@@ -51,12 +51,47 @@ const locations: Record<string, EventLocation> = {
     ),
     coordinates: { lat: 51.1784, lng: -115.5708 },
   },
+  banffGondola: {
+    name: 'Banff Gondola',
+    address: '100 Mountain Ave',
+    city: 'Banff',
+    province: 'AB',
+    postalCode: 'T1L 1K2',
+    country: 'Canada',
+    googleMapsUrl: config.getGoogleMapsUrl(
+      '100 Mountain Ave Banff AB T1L 1K2 Canada'
+    ),
+    coordinates: { lat: 51.1465, lng: -115.5585 },
+  },
 };
 
 export const carolinaAndThorWedding: WeddingTimeline = {
   coupleNames: config.getWeddingConfig().coupleNames,
   weddingDate: config.getWeddingConfig().date,
   days: [
+    {
+      date: '2025-07-09',
+      title: 'Pre-Wedding Adventure',
+      description: 'Optional evening activity for those who want to join',
+      events: [
+        {
+          id: 'gondola_001',
+          title: 'Banff Gondola Ride',
+          time: '19:50',
+          endTime: '21:30',
+          date: '2025-07-09',
+          description: 'Join Lina & Thor for a scenic gondola ride with mountain views! Optional for wedding guests.',
+          location: locations.banffGondola,
+          category: 'preparation',
+          icon: 'mountain',
+          notes: [
+            'Optional activity - feel free to join us or check it out another time during your stay!',
+            'Book tickets: https://www.banffjaspercollection.com/attractions/banff-gondola/',
+            'Amazing sunset views from Sulphur Mountain',
+          ],
+        },
+      ],
+    },
     {
       date: '2025-07-10',
       title: 'Welcome Events',
@@ -121,6 +156,11 @@ export const carolinaAndThorWedding: WeddingTimeline = {
             'Marissa',
           ],
           icon: 'makeup',
+          notes: [
+            'Participants: Inga, Sarah, Iris, Lauren, Karen, Carolina, Rachel V., Rachel G., Marissa',
+            'Please arrive 10 minutes early',
+            'Light breakfast will be provided',
+          ],
         },
         {
           id: 'transport001',
@@ -132,7 +172,6 @@ export const carolinaAndThorWedding: WeddingTimeline = {
           category: 'transportation',
           responsibility: 'Patagonia Shuttle',
           icon: 'car',
-          notes: ['Shuttle pickup at Samsara Properties'],
         },
         // Ceremony
         {
@@ -199,8 +238,8 @@ export const carolinaAndThorWedding: WeddingTimeline = {
   ],
   metadata: {
     timezone: config.getWeddingConfig().timezone,
-    lastUpdated: '2025-07-05T10:00:00Z',
-    version: '1.0.0',
+    lastUpdated: '2025-07-09T19:00:00Z',
+    version: '1.1.0',
   },
 };
 

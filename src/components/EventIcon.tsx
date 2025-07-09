@@ -12,6 +12,7 @@ import {
   GiPartyPopper,
   GiMusicalNotes,
   GiCakeSlice,
+  GiMountains,
 } from 'react-icons/gi';
 import {
   MdLocalDining,
@@ -60,6 +61,7 @@ const EventIcon: React.FC<EventIconProps> = ({
     cake: <GiCakeSlice className={`${className} text-pink-400`} />,
     wine: <GiWineGlass className={`${className} text-red-600`} />,
     makeup: <MdFace className={`${className} text-rose-400`} />,
+    mountain: <GiMountains className={`${className} text-blue-700`} />,
   };
 
   return icons[icon] || icons.heart;

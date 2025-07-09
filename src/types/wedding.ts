@@ -53,7 +53,8 @@ export type EventIcon =
   | 'bouquet'
   | 'cake'
   | 'wine'
-  | 'makeup';
+  | 'makeup'
+  | 'mountain';
 
 export interface WeddingDay {
   date: string;
