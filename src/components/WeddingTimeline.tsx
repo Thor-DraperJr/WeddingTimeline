@@ -76,6 +76,36 @@ const WeddingTimeline: React.FC<WeddingTimelineProps> = ({
     return result;
   }, [events, currentView, isClient]);
 
+  // Format date for display (e.g., "July 9" from "2025-07-09")
+  const formatDateForDisplay = (dateString: string) => {
+    const date = new Date(dateString + 'T00:00:00');
+    return date.toLocaleDateString('en-US', { 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  };
+
+  // Group events by date for timeline display
+  const groupedEvents = useMemo(() => {
+    const groups: Record<string, WeddingEvent[]> = {};
+    
+    filteredEvents.forEach(event => {
+      if (!groups[event.date]) {
+        groups[event.date] = [];
+      }
+      groups[event.date].push(event);
+    });
+    
+    // Sort dates and return as array of { date, events, displayDate }
+    return Object.keys(groups)
+      .sort()
+      .map(date => ({
+        date,
+        events: groups[date],
+        displayDate: formatDateForDisplay(date)
+      }));
+  }, [filteredEvents]);
+
   // Get current event status for highlighting
   const eventStatus = useMemo(() => {
     if (!isClient) return { currentEvent: null };
@@ -105,7 +135,7 @@ const WeddingTimeline: React.FC<WeddingTimelineProps> = ({
               Lina & Thor
             </h1>
             <p className="text-xl text-rose-700 mb-2">Wedding Timeline</p>
-            <p className="text-rose-600">July 10-11, 2025 • Banff, Alberta</p>
+            <p className="text-rose-600">Banff, Alberta</p>
           </div>
           <div className="text-center">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-rose-600"></div>
@@ -119,7 +149,7 @@ const WeddingTimeline: React.FC<WeddingTimelineProps> = ({
             Lina & Thor
           </h1>
           <p className="text-xl text-rose-700 mb-2">Wedding Timeline</p>
-          <p className="text-rose-600">July 10-11, 2025 • Banff, Alberta</p>
+          <p className="text-rose-600">Banff, Alberta</p>
         </div>
 
         {/* Navigation */}
@@ -157,16 +187,33 @@ const WeddingTimeline: React.FC<WeddingTimelineProps> = ({
           {/* Timeline line */}
           <div className="absolute left-8 md:left-1/2 md:transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-rose-300 to-pink-400"></div>
 
-          {/* Events */}
-          <div className="space-y-8">
-            {filteredEvents.length > 0 ? (
-              filteredEvents.map((event, index) => (
-                <EventCard
-                  key={event.id}
-                  event={event}
-                  index={index}
-                  isActive={eventStatus.currentEvent?.id === event.id}
-                />
+          {/* Events grouped by date */}
+          <div className="space-y-12">
+            {groupedEvents.length > 0 ? (
+              groupedEvents.map((dateGroup, groupIndex) => (
+                <div key={dateGroup.date} className="relative">
+                  {/* Date Badge */}
+                  <div className="flex justify-center mb-8">
+                    <div className="relative z-10 bg-gradient-to-r from-rose-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-lg">
+                      <div className="text-center">
+                        <div className="font-semibold text-lg">{dateGroup.displayDate}</div>
+                        <div className="text-sm opacity-90">{new Date(dateGroup.date + 'T00:00:00').getFullYear()}</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Events for this date */}
+                  <div className="space-y-8">
+                    {dateGroup.events.map((event, eventIndex) => (
+                      <EventCard
+                        key={event.id}
+                        event={event}
+                        index={eventIndex}
+                        isActive={eventStatus.currentEvent?.id === event.id}
+                      />
+                    ))}
+                  </div>
+                </div>
               ))
             ) : (
               <div className="text-center py-12">
